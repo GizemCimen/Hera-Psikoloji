@@ -1,14 +1,21 @@
-package com.example.psikolog;
+package com.example.psikolog.hasta;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
+import com.example.psikolog.MainActivity;
+import com.example.psikolog.R;
+import com.example.psikolog.hizmetler.yorum_ekrani;
+
 public class hasta_karsilama_ekrani extends AppCompatActivity {
+
     private Button hasta_karsilama_ekrani_randevu_al;
     private Button hasta_karsilama_ekrani_hizmetler;
     private Button hasta_karsilama_ekrani_test;
@@ -34,7 +41,24 @@ public class hasta_karsilama_ekrani extends AppCompatActivity {
         hasta_karsilama_ekrani_yorum=findViewById(R.id.hasta_karsilama_ekrani_yorum);
         hasta_karsilama_ekrani_cikisyap=findViewById(R.id.hasta_karsilama_ekrani_cikisyap);
 
+        hasta_karsilama_ekrani_cikisyap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giris=new Intent(hasta_karsilama_ekrani.this, MainActivity.class);
+                startActivity(giris);
+            }
+        });
+
+        hasta_karsilama_ekrani_yorum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giris=new Intent(hasta_karsilama_ekrani.this, yorum_ekrani.class);
+                startActivity(giris);
+            }
+        });
+
     }
+
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -44,4 +68,5 @@ public class hasta_karsilama_ekrani extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
