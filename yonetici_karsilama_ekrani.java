@@ -1,4 +1,4 @@
-package com.example.psikolog.yonetici;
+package com.example.psikolog_gizem.yonetici;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,64 +10,63 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.psikolog.MainActivity;
-import com.example.psikolog.R;
-import com.example.psikolog.hasta.hasta_ekrani;
-import com.example.psikolog.hasta.hasta_karsilama_ekrani;
-import com.example.psikolog.psikolog.psikolog_karsilama_ekrani;
+import com.example.psikolog_gizem.R;
 
 public class yonetici_karsilama_ekrani extends AppCompatActivity {
     private Button yonetici_karsilama_ekrani_psikolog_listeleme;
-    private Button yonetici_karsilama_ekrani_ayarlar;
+    private Button yonetici_karsilama_ekrani_bildirimler;
+
     private Button yonetici_karsilama_ekrani_randevulari_goruntuleme;
-    private Button yonetici_karsilama_ekrani_cikisyap;
-    private Button psikolog_ekle;
+    private Button button_yonetici_psikolog_ekle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yonetici_karsilama_ekrani);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         getSupportActionBar().setTitle("HERA PSİKOLOJİ");
 
 
         yonetici_karsilama_ekrani_psikolog_listeleme=findViewById(R.id.yonetici_karsilama_ekrani_psikolog_listeleme);
+        yonetici_karsilama_ekrani_bildirimler=findViewById(R.id.yonetici_karsilama_ekrani_bildirimler);
 
-        yonetici_karsilama_ekrani_ayarlar=findViewById(R.id.yonetici_karsilama_ekrani_ayarlar);
         yonetici_karsilama_ekrani_randevulari_goruntuleme=findViewById(R.id.yonetici_karsilama_ekrani_randevulari_goruntuleme);
-        yonetici_karsilama_ekrani_cikisyap=findViewById(R.id.psikolog_karsilama_ekrani_cikisyap);
-        psikolog_ekle=findViewById(R.id.psikolog_ekle);
+        button_yonetici_psikolog_ekle=findViewById(R.id.button_yonetici_psikolog_ekle);
 
-
-        psikolog_ekle.setOnClickListener(new View.OnClickListener() {
+        yonetici_karsilama_ekrani_bildirimler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent giris=new Intent(yonetici_karsilama_ekrani.this, yonetici_psikolog_ekleme_sayfasi.class);
-                startActivity(giris);
+                Intent intent=new Intent(yonetici_karsilama_ekrani.this, yonetici_bildirimler_ekrani.class);
+            startActivity(intent);
             }
         });
 
-        /*yonetici_karsilama_ekrani_cikisyap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent giris=new Intent(yonetici_karsilama_ekrani.this, MainActivity.class);
-                startActivity(giris);
-            }
-        });*/
+        yonetici_karsilama_ekrani_psikolog_listeleme.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent=new Intent(yonetici_karsilama_ekrani.this,yonetici_psikolog_listeleme_ekrani.class);
+               startActivity(intent);
+           }
+       });
 
-        yonetici_karsilama_ekrani_ayarlar.setOnClickListener(new View.OnClickListener() {
+        yonetici_karsilama_ekrani_randevulari_goruntuleme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent giris=new Intent(yonetici_karsilama_ekrani.this, yonetici_ayarlar.class);
-                startActivity(giris);
+                Intent intent=new Intent(yonetici_karsilama_ekrani.this,yonetici_randevu_listeleme_ekrani.class);
+                startActivity(intent);
             }
         });
-
-
-
+        button_yonetici_psikolog_ekle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(yonetici_karsilama_ekrani.this, yonetici_psikolog_ekleme_sayfasi.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
+
 
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
