@@ -1,4 +1,4 @@
-package com.example.psikolog;
+package com.example.psikolog_gizem.yonetici;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -11,17 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.psikolog_gizem.R;
 
 public class yonetici_ekrani extends AppCompatActivity {
     private EditText yonetici_ekrani_e_posta;
     private EditText yonetici_ekrani_sifre;
-    private TextView yonetici_ekrani_sifre_unuttum;
     private Button yonetici_ekrani_giris_yap;
+    private String DefaultID="mirac";
+    private String DefaultPassword="3543";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yonetici_ekrani);
-
 
         getSupportActionBar().setTitle("YÖNETİCİ GİRİŞİ");
 
@@ -30,14 +34,30 @@ public class yonetici_ekrani extends AppCompatActivity {
 
         yonetici_ekrani_e_posta=findViewById(R.id.yonetici_ekrani_e_posta);
         yonetici_ekrani_sifre=findViewById(R.id.yonetici_ekrani_sifre);
-        yonetici_ekrani_sifre_unuttum=findViewById(R.id.yonetici_ekrani_sifre_unuttum);
         yonetici_ekrani_giris_yap=findViewById(R.id.yonetici_ekrani_giris_yap);
 
         yonetici_ekrani_giris_yap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent giris=new Intent(yonetici_ekrani.this, yonetici_karsilama_ekrani.class);
-                startActivity(giris);
+                String id=yonetici_ekrani_e_posta.getText().toString();
+                String sifre=yonetici_ekrani_sifre.getText().toString();
+
+                if(yonetici_ekrani_e_posta.getText().toString().equals("")||
+                        yonetici_ekrani_sifre.getText().toString().equals("") ){
+                    Toast.makeText(getApplicationContext(),"ALANLAR BOŞ BIRAKILAMAZ !", Toast.LENGTH_SHORT).show();
+
+                }
+
+                else if(DefaultID.equals(id)&&DefaultPassword.equals(sifre)){
+                    Intent giris=new Intent(yonetici_ekrani.this, yonetici_karsilama_ekrani.class);
+                    startActivity(giris);
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"KULLANICI ADI VEYA ŞİFRE HATALI", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
     }
