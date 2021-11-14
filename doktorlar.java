@@ -1,7 +1,8 @@
-package com.example.psikolog.veritabani;
+package com.example.psikolog_gizem.veritabani;
 
-public class doktorlar
-{
+
+
+public class doktorlar {
     private int doktor_id;
     private String doktor_adi_soyadi;
     private String doktor_e_posta;
@@ -9,6 +10,15 @@ public class doktorlar
     private String doktor_hizmetler;
 
     public doktorlar() {
+    }
+
+    public doktorlar(int doktor_id){
+        this.doktor_id=doktor_id;
+    }
+
+    public doktorlar(String doktor_e_posta,String doktor_sifre){
+        this.doktor_e_posta=doktor_e_posta;
+        this.doktor_sifre=doktor_sifre;
     }
 
     public doktorlar(int doktor_id, String doktor_adi_soyadi, String doktor_e_posta,String doktor_sifre,String doktor_hizmetler) {
@@ -19,13 +29,15 @@ public class doktorlar
         this.doktor_hizmetler=doktor_hizmetler;
 
     }
-    public doktorlar( String doktor_adi_soyadi, String doktor_e_posta,String doktor_sifre,String doktor_hizmetler) {
+    public doktorlar(String doktor_adi_soyadi, String doktor_e_posta,String doktor_sifre,String doktor_hizmetler) {
         this.doktor_adi_soyadi=doktor_adi_soyadi;
         this.doktor_e_posta=doktor_e_posta;
         this.doktor_sifre=doktor_sifre;
         this.doktor_hizmetler=doktor_hizmetler;
 
     }
+
+
     public int getdoktor_id() {
         return doktor_id;
     }
@@ -50,4 +62,6 @@ public class doktorlar
 
     public String getdoktor_e_posta() {return doktor_e_posta;}
     public void  setdoktor_e_posta(String doktor_e_posta) {this.doktor_e_posta = doktor_e_posta;}
+
+
 }
